@@ -1,6 +1,7 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-
+const countryModel = require('./models/Country');
+const activityModel = require('./models/Activity');
 const fs = require('fs');
 const path = require('path');
 const {
@@ -14,6 +15,11 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
+
+countryModel(sequelize);
+activityModel(sequelize);
+
+console.log(sequelize.models)
 
 fs.readdirSync(path.join(__dirname, '/models'))
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
