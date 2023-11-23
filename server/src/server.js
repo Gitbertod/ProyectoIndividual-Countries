@@ -2,7 +2,7 @@ const express = require("express");
 const router = require("./routes");
 const morgan = require("morgan");
 const cors = require("cors");
-const { Activity } = require('./db');
+const { Activity, Country } = require('./db');
 const server = express();
 
 server.use(morgan("dev"));
@@ -14,8 +14,14 @@ server.use(router);
 
 /**📍 GET | /countries
 Obtiene un arreglo de objetos, donde cada objeto es un país con toda su información.*/
-
-
+server.get('/countries', async (req, res) => {
+    try {
+        const allCountries = await Country.findAll()
+        res.status(200).json(allCountries);
+    } catch (error) {
+        res.status(404).send(error.message);
+    }
+})
 
 /*📍 GET | /countries/:idPais
 Esta ruta obtiene el detalle de un país específico. Es decir que devuelve un objeto con la información pedida en el detalle de un país.
@@ -33,7 +39,7 @@ Si no existe el país, debe mostrar un mensaje adecuado.
 Esta ruta recibirá todos los datos necesarios para crear una actividad turística y relacionarla con los países solicitados.
 Toda la información debe ser recibida por body.
 Debe crear la actividad turística en la base de datos, y esta debe estar relacionada con los países indicados (al menos uno).*/
- server.post('/activities', async (req, res) => {
+server.post('/activities', async (req, res) => {
     try {
         const { nombre, dificultad, duracion, temporada } = req.body;
         const newActivity = await Activity.create({ nombre, dificultad, duracion, temporada });
@@ -49,7 +55,7 @@ Debe crear la actividad turística en la base de datos, y esta debe estar relaci
 Obtiene un arreglo de objetos, donde cada objeto es una actividad turística.*/
 server.get('/activities', async (req, res) => {
     try {
-        const allActivities  = await Activity.findAll()
+        const allActivities = await Activity.findAll()
         res.status(200).json(allActivities);
     } catch (error) {
         res.status(404).send(error.message);
