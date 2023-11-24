@@ -21,6 +21,8 @@ const fetchDataFromAPI = async () => {
         area: data[i].area,
         poblacion: data[i].population,
       }
+
+      
       countries.push(countryData)
     }
     await Country.bulkCreate(countries)
