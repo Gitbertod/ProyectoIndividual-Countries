@@ -8,10 +8,10 @@ const server = express();
 server.use(morgan("dev"));
 server.use(express.json());
 server.use(cors());
+server.use(router);
 
 const { Op } = require('sequelize');
 
-server.use(router);
 
 
 /**📍 GET | /countries
@@ -79,17 +79,9 @@ Debe crear la actividad turística en la base de datos, y esta debe estar relaci
 
 /* 📍 GET | /activities
 Obtiene un arreglo de objetos, donde cada objeto es una actividad turística.*/
-server.get('/activities', async (req, res) => {
-    try {
-        const allActivities = await Activity.findAll()
-        res.status(200).json(allActivities);
-    } catch (error) {
-        res.status(404).send(error.message);
-        
-    }
-})
 
 
+ 
 //*** Borrar actividad*/
 server.delete('/activities/:id', async (req, res) => {
     try {
