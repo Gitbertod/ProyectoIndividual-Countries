@@ -1,13 +1,15 @@
-const { Activity } = require('../db');
+const { Activity,Country } = require('../db');
 const { Op } = require('sequelize');
 
 
 const getActivityController = async () => {
     try {
-        const allActivities = await Activity.findAll()
-        res.status(200).json(allActivities);
+        const allActivities = await Activity.findAll(
+            {include: Country}
+        )
+        return allActivities
     } catch (error) {
-        res.status(404).send(error.message);
+        throw new Error('no se consiguio la actividad');
 
     }
 }

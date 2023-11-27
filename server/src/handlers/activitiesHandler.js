@@ -1,11 +1,12 @@
 const { getActivityController,postActivityController } = require('../controllers/activityControllers')
 
-const getActivitiesHandler = async (res, req) => {
+const getActivitiesHandler = async (req, res) => {
     try {
         const activities = await getActivityController()
         return res.status(200).json(activities);
     } catch (error) {
-        res.status(500).json({error:error.message})
+        
+       return res.status(500).send({error: error.message})
     }
 }
 

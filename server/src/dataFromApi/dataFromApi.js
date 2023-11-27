@@ -17,6 +17,7 @@ const fetchDataFromAPI = async () => {
                 subregion: data[i].subregion,
                 area: data[i].area,
                 poblacion: data[i].population,
+                activities: []
             }
             countries.push(countryData)
         }
@@ -29,4 +30,4 @@ const fetchDataFromAPI = async () => {
     }
 }
 
-module.exports= {fetchDataFromAPI}
+module.exports = { fetchDataFromAPI }
