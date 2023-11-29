@@ -4,7 +4,7 @@ const countriesRouter = require('./countriesRouter')
 
 const router = Router();
 
-router.use('/country',countriesRouter)
+router.use('/countries',countriesRouter)
 router.use('/activities',activitiesRouter)
 
 module.exports = router;

@@ -2,9 +2,7 @@ const { Country, Activity } = require('../db')
 const { Op } = require('sequelize');
 
 const getAllCountriesController = async () => {
-    const allCountries = await Country.findAll(
-        { include: Activity }
-    )
+    const allCountries = await Country.findAll()
     return allCountries;
 
 }
@@ -20,7 +18,7 @@ const getNameCountriesController = async (nombre) => {
 
     const findCoincidence = await Country.findAll({
         where: {
-            nombre: { [Op.iLike]: `${nombre}` }
+            nombre: { [Op.iLike]: `%${nombre}%` }
         },
     })
 
@@ -32,7 +30,10 @@ const getNameCountriesController = async (nombre) => {
 }
 
 const getCountryByIdController = async (id) => {
-    const findId = await Country.findOne({ where: { id }, include: [Activity] });
+    const findId = await Country.findOne({ where: { id }, include:[{model:Activity,
+        as:'Activities',
+    attributes:["nombre"],
+    through:{attributes:[]}}]});
 
     if (findId) {
         return findId

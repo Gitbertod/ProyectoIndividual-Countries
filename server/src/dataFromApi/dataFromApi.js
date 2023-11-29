@@ -16,8 +16,7 @@ const fetchDataFromAPI = async () => {
                 capital: data[i].capital,
                 subregion: data[i].subregion,
                 area: data[i].area,
-                poblacion: data[i].population,
-                activities: []
+                poblacion: data[i].population
             }
             countries.push(countryData)
         }

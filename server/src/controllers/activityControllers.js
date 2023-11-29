@@ -5,7 +5,10 @@ const { Op } = require('sequelize');
 const getActivityController = async () => {
     try {
         const allActivities = await Activity.findAll(
-            {include: Country}
+            {include:[{model:Country,
+                as:'Countries',
+            attributes:["nombre","imagen_de_la_bandera"],
+            through:{attributes:[]}}]}
         )
         return allActivities
     } catch (error) {
@@ -14,9 +17,11 @@ const getActivityController = async () => {
     }
 }
 
-const postActivityController  = async(nombre, dificultad, duracion, temporada) => {
+const postActivityController  = async(nombre, dificultad, duracion, temporada,countryId) => {
     const newActivity = await Activity.create({ nombre, dificultad, duracion, temporada });
-    console.log(nombre)
+  
+    await newActivity.setCountries(countryId)
+    
     return newActivity
 }
 
@@ -25,3 +30,5 @@ module.exports = {
     getActivityController,
     postActivityController
 }
+
+//CUANDO SE CREA LA ACTIVIDAD SE DEBE INCLUIR CON QUE PAIS SE RELACIONA
