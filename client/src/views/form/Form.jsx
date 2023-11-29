@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './Form.css'
 
 function Form() {
-    const [count, setCount] = useState(0)
+    
 
     return (
         <>

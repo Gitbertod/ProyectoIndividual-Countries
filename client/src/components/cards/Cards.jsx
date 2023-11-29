@@ -4,10 +4,12 @@ import './cards.css'
 
 
 function Cards() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
+     <Card></Card>
+     <Card></Card>
+     <Card></Card>
      <Card></Card>
 
     </>

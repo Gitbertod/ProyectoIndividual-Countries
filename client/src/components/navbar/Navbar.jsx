@@ -2,13 +2,13 @@ import { useState } from 'react'
 import './navbar.css'
 
 function Navbar() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-     <p>Navbar</p>
+    <div>
+        <p>Navbar</p>
 
-    </>
+    </div>
+
+    
   )
 }
 
