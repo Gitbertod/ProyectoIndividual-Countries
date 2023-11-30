@@ -1,19 +1,26 @@
 import { useState } from 'react'
-import Card from '../card/card'
+import Card from '../card/Card'
 import './cards.css'
 
 
-function Cards() {
+function Cards({ allCountries }) {
+  console.log("allCountries[0] " , allCountries[0])
+  const countryList = allCountries
 
   return (
-    <>
-     <Card></Card>
-     <Card></Card>
-     <Card></Card>
-     <Card></Card>
+    <div className='cards-list'>
+      {countryList.map((country) => (
+        <Card country={country} />
+      )
+      )}
 
-    </>
+
+      {/* {countryList?.map((country)=>(
+        <Card country={country}/>
+      ))} */}
+
+    </div>
   )
 }
 
-export default Cards
+export default Cards;

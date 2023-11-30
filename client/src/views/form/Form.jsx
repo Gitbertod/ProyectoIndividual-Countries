@@ -2,16 +2,16 @@ import { useState } from 'react'
 import './Form.css'
 
 function Form() {
-    
 
     return (
-        <>
-            <div>
+
+        <div>
+            <form>
                 <h1>FORM</h1>
-            </div>
 
+            </form>
+        </div>
 
-        </>
     )
 }
 

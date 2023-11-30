@@ -8,11 +8,18 @@ const {
 const allCountriesHandler = async (req, res) => {
     const { nombre } = req.query;
 
-    try {
-        const countries = nombre ? await getNameCountriesController(nombre) : await getAllCountriesController()
-        return res.status(200).json({ countries })
-    } catch (error) {
-        return res.status(500).json({ error: error.message })
+    if(nombre){
+        try {
+            res.status(200).json(await getNameCountriesController(nombre))
+        } catch (error) {
+            res.status(500).json({error:error.message })
+        }
+    }else{
+        try {
+            res.status(200).json(await getAllCountriesController())
+        } catch (error) {
+            res.status(500).json({error:error.message })
+        }
     }
 }
 
