@@ -11,7 +11,6 @@ import Landing from './views/landing/landing'
 function App() {
   return (
     <>
-     
       <Routes>
         <Route path='/' element={<Landing />}></Route>
         <Route path='/home' element={<Home />}></Route>

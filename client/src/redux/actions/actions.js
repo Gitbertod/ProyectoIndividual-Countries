@@ -1,29 +1,28 @@
 import axios from 'axios'
 
 export const GET_COUNTRIES = "GET_COUNTRIES"
+export const GET_DETAIL = "GET_DETAIL"
 
-export const getCountries = async(dispatch) => {
-
+export const getCountries = async (dispatch) => {
 
     const { data } = await axios.get('http://localhost:3001/countries')
     return dispatch({
         type: GET_COUNTRIES,
         payload: data
     })
-
-
-    // try {
-    //     return async (dispatch) =>{
-    //         const {data} = await axios.get('http://localhost:3001/countries')
-    //         return dispatch({
-    //             type: GET_COUNTRIES,
-    //             payload: data
-    //         })
-    //     }
-
-    // } catch (error) {
-    //     console.log(error)
-    // }
 }
 
-export default { getCountries }
+export const getDetail = async (dispatch) => {
+    const { data } = await axios.get('http://localhost:3001/countries')
+    return dispatch({
+        type: GET_DETAIL,
+        payload: data
+    })
+
+
+}
+
+export default { 
+    getCountries,
+    getDetail 
+}

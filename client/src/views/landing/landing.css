@@ -1,0 +1,44 @@
+body{
+    
+
+}
+.landing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+h1{
+    color:gray;
+    font-size: 50px;
+}
+h2{
+    color:gray;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.globo {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 10px 10px 50px 10px inset;
+    box-shadow: inset;margin-bottom: 40px;
+}
+
+.globo img {
+    position: absolute;
+    width: 350%;
+    animation: desplazamiento 15s linear infinite;
+}
+
+@keyframes desplazamiento {
+    0% {
+        transform: translateX(0%); /* Inicia desde la posición original */
+      }
+      100% {
+        transform: translateX(-100%); /* Se desplaza completamente hacia la izquierda */
+      }
+}
