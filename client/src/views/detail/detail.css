@@ -1,0 +1,24 @@
+.detail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ccc;
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+    margin-bottom: 15px;
+    align-items: center;
+    
+    -moz-osx-front-smoothing:grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+}
+
+.detail img{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    box-shadow: 5px 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+}
